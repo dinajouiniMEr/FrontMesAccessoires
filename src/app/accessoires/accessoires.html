@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                @if(accessoires?.length!=0){
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Type</th>
+                        <th>Date de création</th>
+                        
+                    </tr>
+                </thead>}
+                @for(accessoire of accessoires; track accessoire.idAccessoire ; let index = $index; let nbr=$count; let first=$first ; let last=$last){
+                    <tbody>
+                        <tr>
+                            <td>{{index+1}}</td>
+                            <td>{{accessoire.idAccessoire}}</td>
+                            <td>{{accessoire.nomAccessoire}}</td>
+                            <td>{{accessoire.prixAccessoire}} </td>
+                            <td>{{accessoire.type}}</td>
+                            <td>{{accessoire.dateCreation}}</td>
+                            <td><a class="btn btn-danger" (click)="supprimerAccessoire(accessoire)">Supprimer</a></td>
+                            <td><a class="btn btn-success" [routerLink]="['/update-accessoire',accessoire.idAccessoire]">Modifier</a></td>
+                            
+                        </tr>
+                    </tbody>
+                }
+            </table>
+        </div>
+    </div>
+</div>
